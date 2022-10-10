@@ -111,7 +111,6 @@ window.console.log = this.console.log || function() {};
   Sline.RequestCheckoutURL = async () => {
     res = await _GenerateCheckoutURL();
     Sline.checkoutURL = Sline.baseCheckoutURL + res.id;
-    console.log(Sline.checkoutURL);
     var findlink = document.getElementById("rent");
 		findlink.href = Sline.checkoutURL;
   };
