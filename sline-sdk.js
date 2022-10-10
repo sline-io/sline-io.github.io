@@ -37,7 +37,7 @@ window.console.log = this.console.log || function() {};
       Sline.$ = root.$;
   }
 
-  Sline.checkoutURL = 'https://checkout.sline.io/'
+  Sline.baseCheckoutURL = 'https://checkout.sline.io/checkout/'
 
   /**
    * Call this method first to set your authentication key.
@@ -76,28 +76,18 @@ window.console.log = this.console.log || function() {};
       Sline.apiURL = 'https://api.staging.sline.io/checkout/cart';
     }
     Sline.cart = [];
+    Sline.checkoutURL = "";
   };
 
-  function _RequestCheckoutURL(){
+  function _GenerateCheckoutURL(){
     var url = Sline.apiURL + '/import'
     var payload = {};
     payload['cart'] = Sline.cart;
     payload['retailerSlug'] = Sline.retailerSlug;
   
     var myHeaders = new Headers();
-    myHeaders.append('authority', 'api.staging.sline.io');
-    myHeaders.append('accept', 'application/json, text/plain, */*');
-    myHeaders.append('accept-language', 'en,fr-FR;q=0.9,fr;q=0.8,en-US;q=0.7');
+    myHeaders.append('accept', 'application/json');
     myHeaders.append('content-type', 'application/json');
-    myHeaders.append('origin', 'https://checkout.staging.sline.io');
-    myHeaders.append('referer', 'https://checkout.staging.sline.io/');
-    myHeaders.append('sec-ch-ua', '\'Chromium\';v=\'106\', \'Google Chrome\';v=\'106\', \'Not;A=Brand\';v=\'99\'');
-    myHeaders.append('sec-ch-ua-mobile', '?0');
-    myHeaders.append('sec-ch-ua-platform', '\'macOS\'');
-    myHeaders.append('sec-fetch-dest', 'empty');
-    myHeaders.append('sec-fetch-mode', 'no-cors');
-    myHeaders.append('sec-fetch-site', 'same-site');
-    myHeaders.append('user-agent', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36');
     var raw = JSON.stringify(payload);
     var requestOptions = {
       method: 'POST',
@@ -105,20 +95,24 @@ window.console.log = this.console.log || function() {};
       body: raw,
       redirect: 'follow'
     };
-    fetch(url, requestOptions)
-      .then(response => {
-        return response.json();
-      }).then(jsonResponse => {
-        console.log(jsonResponse);
-      }).catch(error => {
-        console.log(error);
-      })
+    return fetch(url, requestOptions)
+    .then((response) => response.json())
+    .then((responseData) => {
+      return responseData;
+    })
+    .catch(error => console.warn(error));
   }
+
   /**
-   * Get checkoout URL from cart
+   * Get checkout URL from cart
    */
-  Sline.RequestCheckoutURL = function() {
-    return Promise.resolve(_RequestCheckoutURL());
+  Sline.RequestCheckoutURL = async () => {
+    res = await _GenerateCheckoutURL();
+    Sline.checkoutURL = Sline.baseCheckoutURL + res.id;
+    console.log(Sline.checkoutURL);
+    var findlink = document.getElementById("rent");
+		findlink.href = Sline.checkoutURL;
   };
+
 
 }(this));
