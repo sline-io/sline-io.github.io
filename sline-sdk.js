@@ -105,13 +105,14 @@ window.console.log = this.console.log || function() {};
       body: raw,
       redirect: 'follow'
     };
-    return fetch(url, requestOptions)
-      .then((response) => response.json())
-      .then((data) => {
-        Sline.checkoutURL = Sline.checkoutURL + Sline.retailerSlug + '/' + data.id;
-        return Sline.checkoutURL
+    fetch(url, requestOptions)
+      .then(response => {
+        return response.json();
+      }).then(jsonResponse => {
+        console.log(jsonResponse);
+      }).catch(error => {
+        console.log(error);
       })
-      .catch(error => console.log('error', error));
   }
   /**
    * Get checkoout URL from cart
