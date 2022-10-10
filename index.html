@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0px;
+        padding: 30px
+      }
+    </style>
+    <title>Sline SDK usage example</title>
+    <script src="sline-sdk.js"></script>
+    <script>
+      Sline.Initialize('fnac', false);
+      Sline.AddCart('sku-iphone13bleu2', 3);
+      console.log(Sline.RequestCheckoutURL().then(data=>data));
+    </script>
+  </head>
+  <body>
+    <h1>Hello World</h1>
+  </body>
+</html>
