@@ -37,7 +37,7 @@ window.console.log = this.console.log || function() {};
       Sline.$ = root.$;
   }
 
-  Sline.baseCheckoutURL = 'https://checkout.sline.io/checkout/'
+
 
   /**
    * Call this method first to set your authentication key.
@@ -72,8 +72,10 @@ window.console.log = this.console.log || function() {};
     Sline.retailerSlug = retailerSlug;
     if (prod) {
       Sline.apiURL = 'https://api.sline.io/checkout/cart';
+      Sline.baseCheckoutURL = 'https://checkout.sline.io/checkout/'
     } else {
       Sline.apiURL = 'https://api.staging.sline.io/checkout/cart';
+      Sline.baseCheckoutURL = 'https://checkout.staging.sline.io/checkout/'
     }
     Sline.cart = [];
     Sline.checkoutURL = "";
