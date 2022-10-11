@@ -20,8 +20,9 @@
     <script>
       Sline.Initialize('fnac', false);
       Sline.ResetCart();
-      Sline.AddCart('iphone13problue128go', 1);
-      Sline.RequestCheckoutURL();
+      Sline.AddCart('iphone13problue128go', 3);
+      Sline.AddCart('nintendoswitch', 1);
+      Sline.RequestCheckoutURL("rent-btn");
     </script>
   </head>
   <body>
@@ -35,10 +36,10 @@
             <div class="table-responsive">
               <ul class="nav nav-pills nav-fill">
                 <li class="nav-item">
-                  <a class="nav-link active" href="index.html">Location mono-produit FNAC</a>
+                  <a class="nav-link" href="index.html">Location mono-produit FNAC</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="multiproduct-fnac.html">Location import de panier FNAC</a>
+                  <a class="nav-link active" href="multiproduct-fnac.html">Location import de panier FNAC</a>
                 </li>
               </ul>
               <ul class="nav nav-pills nav-fill">
@@ -62,12 +63,13 @@
      * Initialize(string slug, boolean isProduction)
      */
     Sline.Initialize('fnac', false);
-
+    
     /* Configuration du panier à importer dans le parcours locatif
      * AddCart(string sku, int quantity)
      */
-    Sline.AddCart('iphone13problue128go', 1);
-
+    Sline.AddCart('iphone13problue128go', 3);
+    Sline.AddCart('nintendoswitch', 1);
+    
     /*
      * Déclenche un call API, puis injecte l'url du parcours de souscription dans le lien avec l'ID spécifié en paramètre
      */
@@ -77,6 +79,7 @@
      * Optionnel - afin de vider complètement le panier
      */
     Sline.ResetCart();
+
   &lt;/script&gt;
 
   // La balise où injecter l'url du parcours de souscription
@@ -111,8 +114,21 @@
                           </div>
                         </div>
                       </th>
-                      <td class="border-0 align-middle"><strong>1 159.00 €</strong></td>
-                      <td class="border-0 align-middle"><strong>1</strong></td>
+                      <td class="border-0 align-middle"><strong>3 477.00 €</strong></td>
+                      <td class="border-0 align-middle"><strong>3</strong></td>
+                    </tr>
+                    <tr>
+                      <th scope="row">
+                        <div class="p-2">
+                          <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Nintendo_Switch_Console.png" alt="" width="70" class="img-fluid rounded shadow-sm">
+                          <div class="ml-3 d-inline-block align-middle">
+                            <h5 class="mb-0"><a href="#" class="text-dark d-inline-block">Nintendo Switch</a></h5>
+                          </div>
+                        </div>
+                      </th>
+                      <td class="align-middle"><strong>229.00 €</strong></td>
+                      <td class="align-middle"><strong>1</strong></td>
+                      </td>
                     </tr>
                   </tbody>
                 </table>
@@ -122,6 +138,6 @@
           </div>
         </div>
       </div>
-    </div>
+    </div>  
   </body>
 </html>

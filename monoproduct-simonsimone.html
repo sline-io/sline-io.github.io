@@ -18,11 +18,10 @@
     <title>Sline SDK usage example</title>
 
     <script>
-      Sline.Initialize('fnac', false);
+      Sline.Initialize('simonsimone', false);
       Sline.ResetCart();
-      Sline.AddCart('iphone13problue128go', 3);
-      Sline.AddCart('nintendoswitch', 1);
-      Sline.RequestCheckoutURL("rent-btn");
+      Sline.AddCart('784-3328-3289-3296-3325-3327', 1);
+      Sline.RequestCheckoutURL();
     </script>
   </head>
   <body>
@@ -36,10 +35,18 @@
             <div class="table-responsive">
               <ul class="nav nav-pills nav-fill">
                 <li class="nav-item">
-                  <a class="nav-link" href="index.html">Location mono-produit</a>
+                  <a class="nav-link" href="index.html">Location mono-produit FNAC</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link active" href="multiproduct.html">Location import de panier</a>
+                  <a class="nav-link" href="multiproduct-fnac.html">Location import de panier FNAC</a>
+                </li>
+              </ul>
+              <ul class="nav nav-pills nav-fill">
+                <li class="nav-item">
+                  <a class="nav-link active" href="monoproduct-simonsimone.html">Location mono-produit Simon Simone</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="multiproduct-simonsimone.html">Location import de panier Simon Simone</a>
                 </li>
               </ul>
             </div>
@@ -54,14 +61,13 @@
     /* Initialisation du SDK
      * Initialize(string slug, boolean isProduction)
      */
-    Sline.Initialize('fnac', false);
-    
+    Sline.Initialize('simonsimone', false);
+
     /* Configuration du panier à importer dans le parcours locatif
      * AddCart(string sku, int quantity)
      */
-    Sline.AddCart('iphone13problue128go', 3);
-    Sline.AddCart('nintendoswitch', 1);
-    
+    Sline.AddCart('784-3328-3289-3296-3325-3327', 1);
+
     /*
      * Déclenche un call API, puis injecte l'url du parcours de souscription dans le lien avec l'ID spécifié en paramètre
      */
@@ -71,11 +77,10 @@
      * Optionnel - afin de vider complètement le panier
      */
     Sline.ResetCart();
-
   &lt;/script&gt;
 
   // La balise où injecter l'url du parcours de souscription
-  &lt;a href="#" id="rent"&gt;Louer&lt;/a&gt;
+  &lt;a href="#" id="rent-btn"&gt;Louer&lt;/a&gt;
               </code>
             </pre>
           </div>
@@ -100,27 +105,14 @@
                     <tr>
                       <th scope="row" class="border-0">
                         <div class="p-2">
-                          <img src="https://media.ldlc.com/r1600/ld/products/00/05/88/64/LD0005886472_1_0005927794.jpg" alt="" width="70" class="img-fluid rounded shadow-sm">
+                          <img src="https://app.syncspider.com/prestashop-images/22113/784/6664.jpg" alt="" width="70" class="img-fluid rounded shadow-sm">
                           <div class="ml-3 d-inline-block align-middle">
-                            <h5 class="mb-0"> <a href="#" class="text-dark d-inline-block align-middle">iPhone 13 Pro Bleu 128 Go</a></h5>
+                            <h5 class="mb-0"> <a href="#" class="text-dark d-inline-block align-middle">Canapé 2 à 3 places Versailles - SIMON-SIMONE</a></h5><span class="text-muted font-weight-normal font-italic d-block">Dimensions canap fixe: 160 cm x 95 cm<br>Matière du canapé: Bergamo<br>Couleur canapé Bergamo: Bleu Glacier<br>Pieds canapé: Chêne teinté noir<br>Canapé - Reprise ancien canapé: Oui</span>
                           </div>
                         </div>
                       </th>
-                      <td class="border-0 align-middle"><strong>3 477.00 €</strong></td>
-                      <td class="border-0 align-middle"><strong>3</strong></td>
-                    </tr>
-                    <tr>
-                      <th scope="row">
-                        <div class="p-2">
-                          <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Nintendo_Switch_Console.png" alt="" width="70" class="img-fluid rounded shadow-sm">
-                          <div class="ml-3 d-inline-block align-middle">
-                            <h5 class="mb-0"><a href="#" class="text-dark d-inline-block">Nintendo Switch</a></h5>
-                          </div>
-                        </div>
-                      </th>
-                      <td class="align-middle"><strong>229.00 €</strong></td>
-                      <td class="align-middle"><strong>1</strong></td>
-                      </td>
+                      <td class="border-0 align-middle"><strong>1 450.00 €</strong></td>
+                      <td class="border-0 align-middle"><strong>1</strong></td>
                     </tr>
                   </tbody>
                 </table>
@@ -130,6 +122,6 @@
           </div>
         </div>
       </div>
-    </div>  
+    </div>
   </body>
 </html>
