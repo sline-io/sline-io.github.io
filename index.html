@@ -61,9 +61,9 @@
     Sline.AddCart('iphone13problue128go', 1);
 
     /*
-     * Déclenche un call API, puis injecte l'url du parcours de souscription dans la balise "rent" 
+     * Déclenche un call API, puis injecte l'url du parcours de souscription dans le lien avec l'ID spécifié en paramètre
      */
-    Sline.RequestCheckoutURL();
+    Sline.RequestCheckoutURL("rent-btn");
 
     /*
      * Optionnel - afin de vider complètement le panier
@@ -108,7 +108,7 @@
                     </tr>
                   </tbody>
                 </table>
-                <a href="#" id="rent" class="btn btn-dark rounded-pill py-2 btn-block">Louer</a>
+                <a href="#" id="rent-btn" class="btn btn-dark rounded-pill py-2 btn-block">Louer</a>
               </div>
             </div>
           </div>
