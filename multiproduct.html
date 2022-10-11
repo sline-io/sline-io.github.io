@@ -6,14 +6,14 @@
     <link rel="icon" type="image/svg+xml" href="/assets/sline.svg">
     <link rel="stylesheet" href="/assets/index.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
-    <script type="text/javascript" src="//code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/default.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script>
     <script>hljs.highlightAll();</script>
-
-    <script src="sline-sdk.min.js"></script>
+    
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/sline-io/web-sdk@1/sline-sdk.min.js"></script>
 
     <title>Sline SDK usage example</title>
 
@@ -45,11 +45,37 @@
             </div>
             <pre style="width: 100%; padding-top: 20px;">
               <code class="language-javascript">
-  Sline.Initialize('fnac', false);
-  Sline.ResetCart();
-  Sline.AddCart('iphone13problue128go', 3);
-  Sline.AddCart('nintendoswitch', 1);
-  Sline.RequestCheckoutURL();
+  // À mettre dans la section &lt;head&gt; de la page
+  &lt;script type="text/javascript" src="https://cdn.jsdelivr.net/gh/sline-io/web-sdk@1/sline-sdk.min.js"&gt;&lt;/script&gt;
+  
+  // À mettre dans la section &lt;body&gt; de la page
+  &lt;script type="text/javascript"&gt;
+
+    /* Initialisation du SDK
+     * Initialize(string slug, boolean isProduction)
+     */
+    Sline.Initialize('fnac', false);
+    
+    /* Configuration du panier à importer dans le parcours locatif
+     * AddCart(string sku, int quantity)
+     */
+    Sline.AddCart('iphone13problue128go', 3);
+    Sline.AddCart('nintendoswitch', 1);
+    
+    /*
+     * Déclenche un call API, puis injecte l'url du parcours de souscription dans la balise "rent" 
+     */
+    Sline.RequestCheckoutURL();
+
+    /*
+     * Optionnel - afin de vider complètement le panier
+     */
+    Sline.ResetCart();
+
+  &lt;/script&gt;
+
+  // La balise où injecter l'url du parcours de souscription
+  &lt;a href="#" id="rent"&gt;Louer&lt;/a&gt;
               </code>
             </pre>
           </div>
