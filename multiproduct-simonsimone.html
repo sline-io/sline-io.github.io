@@ -13,7 +13,7 @@
     <script>hljs.highlightAll();</script>
     
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/sline-io/web-sdk@1.0.1/sline-sdk.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/sline-io/web-sdk@1/sline-sdk.min.js"></script>
 
     <title>Sline SDK usage example</title>
 
@@ -22,7 +22,7 @@
       Sline.ResetCart();
       Sline.AddCart('784-3328-3289-3296-3325-3327', 1);
       Sline.AddCart('13103', 4);
-      Sline.RequestCheckoutURL("rent-btn");
+      Sline.RequestCheckoutURL("rent-btn", "Louer à partir de ");
     </script>
   </head>
   <body>
@@ -72,14 +72,20 @@
     
     /*
      * Déclenche un call API, puis injecte l'url du parcours de souscription dans le lien avec l'ID spécifié en paramètre
+     * et le texte du second paramètre (optionnel) en prefixe de "X €/mois" dans le texte du lien
      */
-    Sline.RequestCheckoutURL("rent-btn");
+     Sline.RequestCheckoutURL("rent-btn", "Louer à partir de ");
 
     /*
      * Optionnel - afin de vider complètement le panier
      */
     Sline.ResetCart();
 
+    /* 
+     * Mise à jour du panier et du lien vers le parcours locatif à insérer dans le callback déclenché au click sur les sélecteurs de quantité
+     */
+    Sline.UpdateCart(sku, newQuantity);
+    Sline.RequestCheckoutURL("rent-btn", "Louer à partir de ");
   &lt;/script&gt;
 
   // La balise où injecter l'url du parcours de souscription
@@ -97,7 +103,7 @@
                         <div class="p-2 px-3 text-uppercase">Produit</div>
                       </th>
                       <th scope="col" class="border-0 bg-light">
-                        <div class="py-2 text-uppercase">Prix</div>
+                        <div class="py-2 text-uppercase">Prix unitaire</div>
                       </th>
                       <th scope="col" class="border-0 bg-light">
                         <div class="py-2 text-uppercase">Quantité</div>
@@ -115,7 +121,17 @@
                         </div>
                       </th>
                       <td class="border-0 align-middle"><strong>1 450.00 €</strong></td>
-                      <td class="border-0 align-middle"><strong>1</strong></td>
+                      <td class="border-0 align-middle col-md-3">
+                        <div class="input-group mb-2">
+                          <div class="input-group-prepend">
+                            <button class="btn btn-dark" id="qtyminus" type="button">&minus;</button>
+                          </div>
+                          <input type="number" class="form-control" name="784-3328-3289-3296-3325-3327" id="qty" min="1" max="10" step="1" value="1">
+                          <div class="input-group-append">
+                            <button class="btn btn-dark" id="qtyplus" type="button">&plus;</button>
+                          </div>
+                        </div>
+                      </td>
                     </tr>
                     <tr>
                       <th scope="row">
@@ -127,7 +143,16 @@
                         </div>
                       </th>
                       <td class="align-middle"><strong>269.00 €</strong></td>
-                      <td class="align-middle"><strong>4</strong></td>
+                      <td class="border-0 align-middle col-md-3">
+                        <div class="input-group mb-2">
+                          <div class="input-group-prepend">
+                            <button class="btn btn-dark" id="qtyminus2" type="button">&minus;</button>
+                          </div>
+                          <input type="number" class="form-control" name="13103" id="qty2" min="1" max="10" step="1" value="4">
+                          <div class="input-group-append">
+                            <button class="btn btn-dark" id="qtyplus2" type="button">&plus;</button>
+                          </div>
+                        </div>
                       </td>
                     </tr>
                   </tbody>
@@ -140,4 +165,69 @@
       </div>
     </div>  
   </body>
+  <script>
+    var input = document.querySelector('#qty');
+    var input2 = document.querySelector('#qty2');
+    var btnminus = document.querySelector('#qtyminus');
+    var btnplus = document.querySelector('#qtyplus');
+    var btnminus2 = document.querySelector('#qtyminus2');
+    var btnplus2 = document.querySelector('#qtyplus2');
+
+    if (input !== undefined && btnminus !== undefined && btnplus !== undefined && input !== null && btnminus !== null && btnplus !== null) {
+      var min = Number(input.getAttribute('min'));
+      var max = Number(input.getAttribute('max'));
+      var step = Number(input.getAttribute('step'));
+
+      function qtyminus(e) {
+        var current = Number(input.value);
+        var newval = (current - step);
+        if(newval < min) {
+          newval = min;
+        } else if(newval > max) {
+          newval = max;
+        } 
+        input.value = Number(newval);
+        Sline.UpdateCart(input.name, input.value);
+        Sline.RequestCheckoutURL("rent-btn", "Louer à partir de ");
+        e.preventDefault();
+      }
+
+      function qtyplus(e) {
+        var current = Number(input.value);
+        var newval = (current + step);
+        if(newval > max) newval = max;
+        input.value = Number(newval);
+        Sline.UpdateCart(input.name, input.value);
+        Sline.RequestCheckoutURL("rent-btn", "Louer à partir de ");
+        e.preventDefault();
+      }
+      function qtyminus2(e) {
+        var current = Number(input2.value);
+        var newval = (current - step);
+        if(newval < min) {
+          newval = min;
+        } else if(newval > max) {
+          newval = max;
+        } 
+        input2.value = Number(newval);
+        Sline.UpdateCart(input2.name, input2.value);
+        Sline.RequestCheckoutURL("rent-btn", "Louer à partir de ");
+        e.preventDefault();
+      }
+
+      function qtyplus2(e) {
+        var current = Number(input2.value);
+        var newval = (current + step);
+        if(newval > max) newval = max;
+        input2.value = Number(newval);
+        Sline.UpdateCart(input2.name, input2.value);
+        Sline.RequestCheckoutURL("rent-btn", "Louer à partir de ");
+        e.preventDefault();
+      }
+      btnminus.addEventListener('click', qtyminus);
+	    btnplus.addEventListener('click', qtyplus);
+      btnminus2.addEventListener('click', qtyminus2);
+	    btnplus2.addEventListener('click', qtyplus2);
+    }
+  </script>
 </html>
