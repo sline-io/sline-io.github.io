@@ -62,6 +62,12 @@
      * Initialize(string slug, boolean isProduction)
      */
     Sline.Initialize('simonsimone', false);
+    
+    /*
+     * Optionnel - afin de vider complètement le panier
+     * A appeler obligatoirement avant Sline.RequestCheckoutURL
+     */
+    Sline.ResetCart();
 
     /* Configuration du panier à importer dans le parcours locatif
      * AddCart(string sku, int quantity)
@@ -73,11 +79,6 @@
      * et le texte du second paramètre (optionnel) en prefixe de "X €/mois" dans le texte du lien
      */
      Sline.RequestCheckoutURL("rent-btn", "Louer à partir de ");
-
-    /*
-     * Optionnel - afin de vider complètement le panier
-     */
-    Sline.ResetCart();
 
     /* 
      * Mise à jour du panier et du lien vers le parcours locatif à insérer dans le callback déclenché au click sur les sélecteurs de quantité
