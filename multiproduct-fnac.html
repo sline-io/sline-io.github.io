@@ -156,6 +156,28 @@
                         </div>
                       </td>
                     </tr>
+                    <tr>
+                      <th scope="row">
+                        <div class="p-2">
+                          <img src="https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/ipad-air-select-cell-spacegray-202203?wid=940&hei=1112&fmt=png-alpha&.v=1645055392934" alt="" width="70" class="img-fluid rounded shadow-sm">
+                          <div class="ml-3 d-inline-block align-middle">
+                            <h5 class="mb-0"><a href="#" class="text-dark d-inline-block">Ipad Gris Sidéral</a></h5>
+                          </div>
+                        </div>
+                      </th>
+                      <td class="align-middle"><strong>1250.00 €</strong></td>
+                      <td class="border-0 align-middle col-md-3">
+                        <div class="input-group mb-2">
+                          <div class="input-group-prepend">
+                            <button class="btn btn-dark" id="qtyminus3" type="button">&minus;</button>
+                          </div>
+                          <input type="number" class="form-control" name="ipadairgrissideral64" id="qty3" min="1" max="10" step="1" value="1">
+                          <div class="input-group-append">
+                            <button class="btn btn-dark" id="qtyplus3" type="button">&plus;</button>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
                   </tbody>
                 </table>
                 <a href="#" id="rent-btn" class="btn btn-dark rounded-pill py-2 btn-block">Louer</a>
@@ -169,10 +191,13 @@
   <script>
     var input = document.querySelector('#qty');
     var input2 = document.querySelector('#qty2');
+    var input3 = document.querySelector('#qty3');
     var btnminus = document.querySelector('#qtyminus');
     var btnplus = document.querySelector('#qtyplus');
     var btnminus2 = document.querySelector('#qtyminus2');
     var btnplus2 = document.querySelector('#qtyplus2');
+    var btnminus3 = document.querySelector('#qtyminus3');
+    var btnplus3 = document.querySelector('#qtyplus3');
 
     if (input !== undefined && btnminus !== undefined && btnplus !== undefined && input !== null && btnminus !== null && btnplus !== null) {
       var min = Number(input.getAttribute('min'));
@@ -225,10 +250,35 @@
         Sline.RequestCheckoutURL("rent-btn", "Louer à partir de ");
         e.preventDefault();
       }
+      function qtyminus3(e) {
+        var current = Number(input3.value);
+        var newval = (current - step);
+        if(newval < min) {
+          newval = min;
+        } else if(newval > max) {
+          newval = max;
+        } 
+        input3.value = Number(newval);
+        Sline.UpdateCart(input3.name, input3.value);
+        Sline.RequestCheckoutURL("rent-btn", "Louer à partir de ");
+        e.preventDefault();
+      }
+
+      function qtyplus3(e) {
+        var current = Number(input3.value);
+        var newval = (current + step);
+        if(newval > max) newval = max;
+        input3.value = Number(newval);
+        Sline.UpdateCart(input3.name, input3.value);
+        Sline.RequestCheckoutURL("rent-btn", "Louer à partir de ");
+        e.preventDefault();
+      }
       btnminus.addEventListener('click', qtyminus);
 	    btnplus.addEventListener('click', qtyplus);
       btnminus2.addEventListener('click', qtyminus2);
 	    btnplus2.addEventListener('click', qtyplus2);
+      btnminus3.addEventListener('click', qtyminus3);
+	    btnplus3.addEventListener('click', qtyplus3);
     }
   </script>
 </html>
