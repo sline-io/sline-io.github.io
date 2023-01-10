@@ -50,10 +50,8 @@ const config = {
         docs: {
           lastVersion: '2.1.0',
           includeCurrentVersion: false,
-          sidebarPath: false,
-          routeBasePath: '/'
+          sidebarPath: false
         },
-        blog: false,
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
