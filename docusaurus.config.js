@@ -67,6 +67,7 @@ const config = {
         logo: {
           alt: 'Sline Logo',
           src: 'img/sline.svg',
+          href: 'docs/'
         },
         items: [
           {
