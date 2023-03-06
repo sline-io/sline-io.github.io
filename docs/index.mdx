@@ -1,86 +1,74 @@
 ---
 description: Utiliser le SDK de Sline
 title: SDK Sline
-slug: /
-id: index
 ---
 
 export const CartExample = () => {
     return (
         <div className="text-center">
-            <table className="table raw text-left" id="cartv210">
-                <thead>
-                    <tr>
-                        <th scope="col" className="bg-light col-4">
-                            <div className="p-2 px-3 text-uppercase">Produit</div>
-                        </th>
-                        <th scope="col" className="bg-light col-2">
-                            <div className="py-2 text-uppercase">Prix de vente</div>
-                        </th>
-                        <th scope="col" className="bg-light col-2">
-                            <div className="py-2 text-uppercase">Mensualité</div>
-                        </th>
-                        <th scope="col" className="bg-light col-2">
-                            <div className="py-2 text-uppercase">Quantité</div>
-                        </th>
-                        <th scope="col" className="bg-light col-2">
-                            <div className="py-2 text-uppercase">Total</div>
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">
-                            <div className="p-2">
-                            <img src="https://media.ldlc.com/r1600/ld/products/00/05/88/64/LD0005886472_1_0005927794.jpg" alt="" width="70" className="img-fluid rounded shadow-sm" />
-                            <div className="ml-3 d-inline-block align-middle">
-                                <h5 className="mb-0"> <a href="#" className="text-dark d-inline-block align-middle">iPhone 13 Pro Bleu 128 Go</a></h5>
-                            </div>
-                            </div>
-                        </th>
-                        <td className="align-middle"><strong>1 159.00 €</strong></td>
-                        <td className="align-middle"></td>
-                        <td className="align-middle">
-                            <div className="input-group mb-2">
-                            <div className="input-group-prepend">
-                                <button className="btn btn-dark" id="qtyminus" type="button">&minus;</button>
-                            </div>
-                            <input type="number" className="form-control" name="sku-iphone13bleu2" id="qty" min="1" max="10" step="1" defaultValue="2" />
-                            <div className="input-group-append">
-                                <button className="btn btn-dark" id="qtyplus" type="button">+</button>
-                            </div>
-                            </div>
-                        </td>
-                        <td className="align-middle"></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">
-                            <div className="p-2">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Nintendo_Switch_Console.png" alt="" width="70" className="img-fluid rounded shadow-sm" />
-                            <div className="ml-3 d-inline-block align-middle">
-                                <h5 className="mb-0"><a href="#" className="text-dark d-inline-block">Nintendo Switch</a></h5>
-                            </div>
-                            </div>
-                        </th>
-                        <td className="align-middle"><strong>229.00 €</strong></td>
-                        <td className="align-middle"></td>
-                        <td className="align-middle">
-                            <div className="input-group mb-2">
-                            <div className="input-group-prepend">
-                                <button className="btn btn-dark" id="qtyminus2" type="button">&minus;</button>
-                            </div>
-                            <input type="number" className="form-control" name="nintendoswitch" id="qty2" min="1" max="10" step="1" defaultValue="1" />
-                            <div className="input-group-append">
-                                <button className="btn btn-dark" id="qtyplus2" type="button">+</button>
-                            </div>
-                            </div>
-                        </td>
-                        <td className="align-middle"></td>
-                    </tr>
-                </tbody>
-            </table>
-            <div id="period-selector" className="text-right"/>
-            <a href="#" id="rent-btn" className="btn btn-dark rounded-pill px-4">Louer</a>
+             <div style={{display: 'flex', flexDirection: 'row', alignContent: 'center', alignItems: 'center', justifyContent: 'space-around'}}>
+                <article data-sku="iphone13problue128go" style={{border: '1px solid black', padding: '8px', borderRadius: '4px'}}>
+                    <figure style={{margin: '0 0 16px 0', display: 'flex', flexDirection: 'column', height: '100px'}}>
+                        <div style={{flexGrow: 1, display: 'flex', alignContent: 'center', justifyContent: 'center'}}>
+                            <img src="https://media.ldlc.com/r1600/ld/products/00/05/88/64/LD0005886472_1_0005927794.jpg" width="70" height="70" style={{alignSelf: 'center'}} />
+                        </div>
+                        <figcaption>
+                            <strong>iPhone 13 Pro Bleu 128Go</strong>    
+                        </figcaption>
+                    </figure>
+                    <div className="price text-left">
+                        <strong>Prix de vente: </strong>
+                        <span></span>    
+                    </div>   
+                    <div className="instalment text-left">
+                        <strong>Mensualité: </strong>
+                        <span></span>    
+                    </div>    
+                    <div className="quantity">
+                    <span className="minus" data-sku="iphone13problue128go" style={{backgroundColor: 'black', borderBottomLeftRadius: '4px', borderTopLeftRadius: '4px', color: 'white', padding: '4px 12px'}}>-</span>
+                    <input type="number" value="1" min="0" max="10" step="1" data-sku="iphone13problue128go" readOnly />
+                    <span className="plus" data-sku="iphone13problue128go" style={{backgroundColor: 'black', borderBottomRightRadius: '4px', borderTopRightRadius: '4px', color: 'white', padding: '4px 12px'}}>+</span>
+                    </div>
+                    <div className="amount text-left">
+                        <strong>Total: </strong>
+                        <span></span>    
+                    </div>
+                    <footer>
+                        <a href="#" className="btn btn-dark rounded-pill px-4 addToCart" data-sku="iphone13problue128go" id="addToCart">Ajouter au panier</a>
+                    </footer>
+                </article>
+                <article data-sku="234234" style={{border: '1px solid black', padding: '8px', borderRadius: '4px'}}>
+                    <figure style={{margin: '0 0 16px 0', display: 'flex', flexDirection: 'column', height: '100px'}}>
+                        <div style={{flexGrow: 1, display: 'flex', alignContent: 'center', justifyContent: 'center'}}>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Nintendo_Switch_Console.png" width="70" height="70" style={{alignSelf: 'center'}} /> 
+                        </div>   
+                        <figcaption>
+                            <strong>Nintendo switch</strong>    
+                        </figcaption>
+                    </figure>
+                    <div className="price text-left">
+                        <strong>Prix de vente: </strong>
+                        <span></span>    
+                    </div>   
+                    <div className="instalment text-left">
+                        <strong>Mensualité: </strong>
+                        <span></span>    
+                    </div>    
+                    <div className="quantity">
+                    <span className="minus" data-sku="234234" style={{backgroundColor: 'black', borderBottomLeftRadius: '4px', borderTopLeftRadius: '4px', color: 'white', padding: '4px 12px'}}>-</span>
+                    <input type="number" value="1" min="0" max="10" step="1" data-sku="234234" readOnly />
+                    <span className="plus" data-sku="234234" style={{backgroundColor: 'black', borderBottomRightRadius: '4px', borderTopRightRadius: '4px', color: 'white', padding: '4px 12px'}}>+</span>
+                    </div>
+                    <div className="amount text-left">
+                        <strong>Total: </strong>
+                        <span></span>    
+                    </div>
+                    <footer>
+                        <a href="#" className="btn btn-dark rounded-pill px-4 addToCart" data-sku="234234" id="addToCart">Ajouter au panier</a>
+                    </footer>
+                </article>
+            </div>
+            <div id="period-selector" className="text-right mt-3"/>
         </div>
     );
 }
@@ -100,7 +88,8 @@ A la fin de votre &lt;body&gt;, ajoutez la ligne suivante:
         retailer: retailerId,
         production: false,
         checkoutButton: {
-          id: 'rent-btn',
+          //id: 'rent-btn',
+          classPath: '.addToCart',
           prefix: 'Louer à partir de ',
           suffix: '/mois',
           events: {
@@ -127,7 +116,8 @@ A la fin de votre &lt;body&gt;, ajoutez la ligne suivante:
 ### Configuration du CheckoutButton
 | Paramètre | Type | Description | Obligatoire |
 | ---       | ---  | ---         | ---         |
-| id | String | Identifiant du bouton | Oui |
+| id | String | Identifiant du bouton | Oui, si le classPath n'est pas rempli |
+| classPath | String | Chemin d'accès aux boutons en CSS.<br/> Lisez le chapitre sur [l'affichage de plusieurs produits](#affichage-de-plusieurs-produits-sur-une-page). | Oui, si l'id n'est pas rempli |
 | prefix | String | Texte qui apparaîtra avant le prix dans le bouton | Non |
 | suffix | String | Texte qui apparaîtra après le prix dans le bouton | Non |
 | events | Object | Voir la configuration des [évènements du checkoutButton](#configuration-du-checkoutbuttonevents) | Non |
@@ -234,6 +224,12 @@ Sline.GetPriceForProductWithDuration(item, quantity);
 | ---       | ---  | ---         | ---         |
 | elementId | String | ID du bouton déclencheur | Oui |
 | title | String | Texte qui sera injecté dans le bouton, en préfixe de "X€/mois".<br/>Valeur par défaut: "Louer à partir de " | Non |
+
+### Affichage de plusieurs produits sur une page
+Si vous affichez plusieurs produits sur une page, vous devez configurer le sdk avec le champ checkoutButton.classPath et non checkoutButton.id.
+Vous devrez rajouter un attribut "data-sku" sur le bouton d'action, ainsi que sur d'éventuels boutons de gestion de quantité de produit.
+<br/>Si vous souhaitez que le clic sur le bouton d'un produit ajoute simplement ce dernier au panier tout en restant sur la page, vous devez configurer le SDK avec events.customOnClickEvent = true et gérer les évènements dans votre code, y compris l'appel de la méthode AddCart.
+<br/>Si vous souhaitez que le clic vous emmène directement sur la page de checkout, vous n'avez pas de configuration particulière à rajouter.
 
 ## Example
 <CartExample />
