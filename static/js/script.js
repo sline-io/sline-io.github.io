@@ -2,7 +2,7 @@ let sdkLoaded = false;
 let scriptLoaded = false;
 let initialized = false;
 let pathSplitted = location.pathname.substring(1, location.pathname.length - 1).split('/');
-let lastVersion = '2.1.0';
+let lastVersion = '2.2.0';
 
 let scriptEvent = new CustomEvent('SlineScriptLoaded', {
     bubbles: true,
@@ -61,7 +61,7 @@ function loadScripts(e) {
     scriptLoaded = false;
     initialized = false;
     pathSplitted = location.pathname.substring(1, location.pathname.length - 1).split('/');
-    lastVersion = '2.1.0';
+    lastVersion = '2.2.0';
 
     document.querySelectorAll('[data-custom-script=true]').forEach(elt => elt.remove())
     window.Sline = null;
