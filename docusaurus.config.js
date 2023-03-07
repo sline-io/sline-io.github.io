@@ -48,7 +48,7 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
-          lastVersion: '2.2.0',
+          lastVersion: '2.2.3',
           includeCurrentVersion: false,
           sidebarPath: false
         },

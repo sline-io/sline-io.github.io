@@ -61,7 +61,7 @@ function loadScripts(e) {
     scriptLoaded = false;
     initialized = false;
     pathSplitted = location.pathname.substring(1, location.pathname.length - 1).split('/');
-    lastVersion = '2.2.0';
+    lastVersion = '2.2.3';
 
     document.querySelectorAll('[data-custom-script=true]').forEach(elt => elt.remove())
     window.Sline = null;
