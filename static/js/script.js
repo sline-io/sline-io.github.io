@@ -71,7 +71,7 @@ function loadScripts(e) {
     let script = '';
     if (pathSplitted.length === 1) {
         script = `/js/v${lastVersion}.js`;
-        sdk = `https://cdn.jsdelivr.net/gh/sline-io/web-sdk@${lastVersion.split('.').slice(0, -1).join('.')}/sline-sdk.min.js`;
+        sdk = `https://cdn.jsdelivr.net/gh/sline-io/web-sdk@${lastVersion}/sline-sdk.min.js`;
     } else if (pathSplitted.length === 2) {
         script = `/js/v${pathSplitted[1]}.js`;
         sdk = `https://cdn.jsdelivr.net/gh/sline-io/web-sdk@${pathSplitted[1].split('.').slice(0, -1).join('.')}/sline-sdk.min.js`;
