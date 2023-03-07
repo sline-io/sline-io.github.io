@@ -112,13 +112,13 @@ function periodLabelClickListenerv220(e) {
 }
 
 function SlineScriptLoadedListenerv220(e) {
-    if (e.detail.sdkLoaded && !e.detail.initialized && e.detail.version === '2.2.0') {
+    if (e.detail.sdkLoaded && !e.detail.initialized && e.detail.version === '2.2.3') {
         startv220()
     }
 }
 
 function SlineSDKLoadedListenerv220(e) {
-    if (e.detail.scriptLoaded && !e.detail.initialized && e.detail.version === '2.2.0') {
+    if (e.detail.scriptLoaded && !e.detail.initialized && e.detail.version === '2.2.3') {
         startv220();
     }
 }
