@@ -7,10 +7,7 @@ function startv220() {
             //id: 'addToCart',
             classPath: '.addToCart',
             prefix: 'Louer à partir de ',
-            suffix: '/mois',
-            events: {
-              customOnClickEvent: true
-            }
+            suffix: '/mois'
         },
         durationSelector: {
             id: 'period-selector'
