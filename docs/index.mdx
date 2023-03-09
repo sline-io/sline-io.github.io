@@ -34,7 +34,7 @@ export const CartExample = () => {
                         <span></span>    
                     </div>
                     <footer>
-                        <a href="#" className="btn btn-dark rounded-pill px-4 addToCart" data-sku="iphone13problue128go" id="addToCart">Ajouter au panier</a>
+                        <a href="#" className="btn btn-dark rounded-pill px-4 addToCart" data-sku="iphone13problue128go">Ajouter au panier</a>
                     </footer>
                 </article>
                 <article data-sku="234234" style={{border: '1px solid black', padding: '8px', borderRadius: '4px'}}>
@@ -64,7 +64,7 @@ export const CartExample = () => {
                         <span></span>    
                     </div>
                     <footer>
-                        <a href="#" className="btn btn-dark rounded-pill px-4 addToCart" data-sku="234234" id="addToCart">Ajouter au panier</a>
+                        <a href="#" className="btn btn-dark rounded-pill px-4 addToCart" data-sku="234234">Ajouter au panier</a>
                     </footer>
                 </article>
             </div>
@@ -81,6 +81,12 @@ Rajoutez la balise suivante à la fin de la section &lt;head&gt; de votre page:
 ```
 
 ## Initialisation
+Dans votre code, voici à quoi doivent ressembler les boutons:
+```html
+<a href="#" class="addToCart" data-sku="sku1">Louer</a>
+<a href="#" class="addToCart" data-sku="sku2">Louer</a>
+```
+
 A la fin de votre &lt;body&gt;, ajoutez la ligne suivante:
 ```html
 <script type="text/javascript">
